@@ -29,4 +29,3 @@ jobs:
           test -f .gitignore
           test -f README.md
           test -f .env.example
-
