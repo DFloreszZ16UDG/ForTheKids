@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Verify required directories and files
+        shell: bash
+        run: |
+          test -d frontend/React
+          test -d backend/src/controllers
+          test -d backend/src/routes
+          test -d backend/src/models
+          test -d backend/src/middleware
+          test -d backend/src/services
+          test -d backend/tests
+          test -d database/migrations
+          test -d database/seed
+          test -d docs
+          test -f .gitignore
+          test -f README.md
+          test -f .env.example
+
